@@ -17,6 +17,7 @@ function GlobalContextProvider({ children }) {
       });
   }, []);
 
+  // toggle favorite photo
   function toggleFavorite(id) {
     const updatedArray = photos.map((photo) => {
       if (photo.id === id) {
@@ -31,24 +32,39 @@ function GlobalContextProvider({ children }) {
     setPhotos(updatedArray);
   }
 
+  // add photo to cart
   function addToCart(img) {
     setCartItems((prevItems) => [...prevItems, img]);
   }
 
+  //check photo in cart
   function isInCart(img) {
     return cartItems.some((el) => el.id === img.id);
   }
 
+  // remove photo from cart
   function removeFromCart(img) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== img.id));
   }
 
+  // clear cart items
   function clearCart() {
     setCartItems([]);
   }
 
+  // check if cart has items
   function cartHasItems() {
     return cartItems.length > 0;
+  }
+
+  // calculate total price
+  function total() {
+    const unitPrice = 5.99;
+    const calculatedTotal = unitPrice * cartItems.length;
+    return calculatedTotal.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
   }
 
   return (
@@ -62,6 +78,7 @@ function GlobalContextProvider({ children }) {
         cartHasItems,
         cartItems,
         clearCart,
+        total,
       }}
     >
       {children}
