@@ -28,3 +28,28 @@
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   max-width: 100%;
 }
+
+.pic-container {
+  position: relative;
+}
+.favorite {
+  color: red;
+  font-size: 2rem;
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.ri-heart-fill {
+  opacity: 0.7;
+}
+
+.cart {
+  color: cyan;
+  font-size: 2rem;
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  cursor: pointer;
+}
